@@ -68,6 +68,17 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Page = {
+  _id: string;
+  _type: "page";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  content?: ContentEditor;
+  slug?: Slug;
+};
+
 export type Product = {
   _id: string;
   _type: "product";

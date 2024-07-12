@@ -1,6 +1,7 @@
 // ICONS
 import {
     MdShop,
+    MdPages
 } from "react-icons/md"
 
 export default (S: any) =>
@@ -16,5 +17,15 @@ export default (S: any) =>
                         .showIcons(true)
                         .filter('_type == $type')
                         .params({ type: 'product' })
+                ),
+            S.listItem()
+                .title('Pages')
+                .icon(MdPages)
+                .child(
+                    S.documentList()
+                        .title('Pages')
+                        .showIcons(true)
+                        .filter('_type == $type')
+                        .params({ type: 'page' })
                 ),
         ]);
