@@ -86,7 +86,22 @@ export type Product = {
   _updatedAt: string;
   _rev: string;
   title?: string;
+  outOfStock?: boolean;
+  price?: number;
+  productHasVariants?: boolean;
   stripeId?: string;
+  productVariants?: Array<{
+    label?: string;
+    value?: string;
+    _key: string;
+  }>;
+  shippingRates?: Array<{
+    title?: string;
+    price?: number;
+    estimatedDeliveryTimeMin?: number;
+    estimatedDeliveryTimeMax?: number;
+    _key: string;
+  }>;
   mainImage?: {
     asset?: {
       _ref: string;

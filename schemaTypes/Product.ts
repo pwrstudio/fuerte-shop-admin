@@ -10,15 +10,87 @@ export default {
             validation: (Rule: any) => Rule.required()
         },
         {
-            title: 'Stripe ID',
-            name: 'stripeId',
-            type: 'string',
-            validation: (Rule: any) => Rule.required()
-        },
-        {
             title: "Out of stock",
             name: "outOfStock",
             type: "boolean"
+        },
+        {
+            title: "Price",
+            name: "price",
+            type: "number",
+            validation: (Rule: any) => Rule.required()
+        },
+        {
+            title: "Product has variants",
+            name: "productHasVariants",
+            type: "boolean"
+        },
+        {
+            title: 'Stripe ID',
+            name: 'stripeId',
+            type: 'string',
+            hidden: ({ document }) => document?.productHasVariants,
+            validation: (Rule) => Rule.custom((value, { document: { productHasVariants } }) => {
+                return !productHasVariants && !value ? "Field required" : true
+            })
+        },
+        {
+            title: "Product variants",
+            name: "productVariants",
+            type: "array",
+            of: [
+                {
+                    type: "object",
+                    fields: [
+                        {
+                            title: "Title",
+                            name: "label",
+                            type: "string"
+                        },
+                        {
+                            title: "Stripe ID",
+                            name: "value",
+                            type: "string",
+                            validation: (Rule) => Rule.custom((value, { document: { productHasVariants } }) => {
+                                return productHasVariants && !value ? "Field required" : true
+                            })
+                        }
+                    ]
+                }
+            ],
+            hidden: ({ document }) => !document?.productHasVariants
+        },
+        {
+            title: "Shipping rates",
+            name: "shippingRates",
+            type: "array",
+            of: [
+                {
+                    type: "object",
+                    fields: [
+                        {
+                            title: "Title",
+                            name: "title",
+                            type: "string"
+                        },
+                        {
+                            title: "Price",
+                            name: "price",
+                            type: "number"
+                        },
+                        {
+                            title: "Estimated delivery time in days (minimum)",
+                            name: "estimatedDeliveryTimeMin",
+                            type: "number"
+                        },
+                        {
+                            title: "Estimated delivery time in days (maximum)",
+                            name: "estimatedDeliveryTimeMax",
+                            type: "number"
+                        }
+                    ]
+                }
+            ]
         },
         {
             title: 'Main image',
@@ -42,7 +114,7 @@ export default {
                 {
                     type: 'image',
                     options: {
-                        hotspot: true // <-- Defaults to false
+                        hotspot: true
                     },
                 }
             ]
