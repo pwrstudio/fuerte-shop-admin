@@ -16,6 +16,11 @@ export default {
             validation: (Rule: any) => Rule.required()
         },
         {
+            title: "Out of stock",
+            name: "outOfStock",
+            type: "boolean"
+        },
+        {
             title: 'Main image',
             name: 'mainImage',
             type: 'image',
