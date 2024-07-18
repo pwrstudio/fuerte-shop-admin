@@ -36,6 +36,12 @@ export default {
             hidden: ({ document }) => document?.productHasVariants,
         },
         {
+            title: "Product variants legend",
+            name: "productVariantsLegend",
+            type: "string",
+            hidden: ({ document }) => !document?.productHasVariants,
+        },
+        {
             title: "Product variants",
             name: "productVariants",
             type: "array",
