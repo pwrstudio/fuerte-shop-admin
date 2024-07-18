@@ -10,11 +10,6 @@ export default {
             validation: (Rule: any) => Rule.required()
         },
         {
-            title: "Out of stock",
-            name: "outOfStock",
-            type: "boolean"
-        },
-        {
             title: "Price",
             name: "price",
             type: "number",
@@ -33,6 +28,12 @@ export default {
             validation: (Rule) => Rule.custom((value, { document: { productHasVariants } }) => {
                 return !productHasVariants && !value ? "Field required" : true
             })
+        },
+        {
+            title: "Out of stock",
+            name: "outOfStock",
+            type: "boolean",
+            hidden: ({ document }) => document?.productHasVariants,
         },
         {
             title: "Product variants",
@@ -54,8 +55,26 @@ export default {
                             validation: (Rule) => Rule.custom((value, { document: { productHasVariants } }) => {
                                 return productHasVariants && !value ? "Field required" : true
                             })
+                        },
+                        {
+                            title: "Out of stock",
+                            name: "outOfStock",
+                            type: "boolean"
+                        },
+                    ],
+                    preview: {
+                        select: {
+                            title: "label",
+                            outOfStock: "outOfStock"
+                        },
+                        prepare({ title, outOfStock }) {
+                            return {
+                                title: title,
+                                subtitle: outOfStock ? "Out of stock" : ""
+                            }
                         }
-                    ]
+
+                    }
                 }
             ],
             hidden: ({ document }) => !document?.productHasVariants
