@@ -25,9 +25,14 @@ export default {
             name: 'stripeId',
             type: 'string',
             hidden: ({ document }) => document?.productHasVariants,
-            validation: (Rule) => Rule.custom((value, { document: { productHasVariants } }) => {
+            validation: (Rule: any) => Rule.custom((value, { document: { productHasVariants } }) => {
                 return !productHasVariants && !value ? "Field required" : true
             })
+        },
+        {
+            title: "Coming soon",
+            name: "comingSoon",
+            type: "boolean",
         },
         {
             title: "Out of stock",
@@ -58,7 +63,7 @@ export default {
                             title: "Stripe ID",
                             name: "value",
                             type: "string",
-                            validation: (Rule) => Rule.custom((value, { document: { productHasVariants } }) => {
+                            validation: (Rule: any) => Rule.custom((value, { document: { productHasVariants } }) => {
                                 return productHasVariants && !value ? "Field required" : true
                             })
                         },
