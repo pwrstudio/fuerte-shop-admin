@@ -14,6 +14,19 @@ export default defineConfig({
     structureTool({ structure: deskStructure })
   ],
 
+  document: {
+    newDocumentOptions: (prev, { creationContext }) => {
+      const { type } = creationContext;
+      const DISABLED_TYPES = [
+        'landingPage',
+      ];
+      if (type === 'global') {
+        return prev.filter((template) => !DISABLED_TYPES.includes(template.templateId));
+      }
+      return prev;
+    },
+  },
+
   schema: {
     types: schemaTypes,
   },

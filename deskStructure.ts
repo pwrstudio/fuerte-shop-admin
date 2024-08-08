@@ -1,13 +1,23 @@
 // ICONS
 import {
     MdShop,
-    MdPages
+    MdPages,
+    MdHome
 } from "react-icons/md"
 
 export default (S: any) =>
     S.list()
         .title("Fuerte Shop")
         .items([
+            S.listItem()
+                .title("Landing page layout")
+                .icon(MdHome)
+                .child(
+                    S.editor()
+                        .id('landing-page')
+                        .schemaType("landingPage")
+                        .documentId("landing-page")
+                ),
             S.listItem()
                 .title('Products')
                 .icon(MdShop)

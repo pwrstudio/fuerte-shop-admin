@@ -68,6 +68,25 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type LandingPage = {
+  _id: string;
+  _type: "landingPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  products?: Array<{
+    size?: "full" | "half" | "third";
+    product?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "product";
+    };
+    _key: string;
+  }>;
+};
+
 export type Page = {
   _id: string;
   _type: "page";
@@ -86,13 +105,16 @@ export type Product = {
   _updatedAt: string;
   _rev: string;
   title?: string;
-  outOfStock?: boolean;
   price?: number;
   productHasVariants?: boolean;
   stripeId?: string;
+  comingSoon?: boolean;
+  outOfStock?: boolean;
+  productVariantsLegend?: string;
   productVariants?: Array<{
     label?: string;
     value?: string;
+    outOfStock?: boolean;
     _key: string;
   }>;
   shippingRates?: Array<{
