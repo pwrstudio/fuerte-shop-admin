@@ -44,13 +44,15 @@ export default {
                 preview: {
                     select: {
                         title: 'product.title',
-                        size: 'size'
+                        size: 'size',
+                        image: 'product.mainImage'
                     },
-                    prepare(selection) {
-                        const { title, size } = selection
+                    prepare(selection: any) {
+                        const { title, size, image } = selection
                         return {
                             title: title,
-                            subtitle: size
+                            subtitle: size,
+                            media: image
                         }
                     }
                 }
