@@ -17,23 +17,23 @@ export default {
                 title: 'Product',
                 type: 'object',
                 fields: [
-                    {
-                        title: 'Size',
-                        name: 'size',
-                        type: 'string',
-                        options: {
-                            list: [{
-                                title: 'Full',
-                                value: 'full'
-                            }, {
-                                title: 'Half',
-                                value: 'half'
-                            }, {
-                                title: 'Third',
-                                value: 'third'
-                            }],
-                        }
-                    },
+                    // {
+                    //     title: 'Size',
+                    //     name: 'size',
+                    //     type: 'string',
+                    //     options: {
+                    //         list: [{
+                    //             title: 'Full',
+                    //             value: 'full'
+                    //         }, {
+                    //             title: 'Half',
+                    //             value: 'half'
+                    //         }, {
+                    //             title: 'Third',
+                    //             value: 'third'
+                    //         }],
+                    //     }
+                    // },
                     {
                         title: 'Product',
                         name: 'product',
@@ -44,14 +44,14 @@ export default {
                 preview: {
                     select: {
                         title: 'product.title',
-                        size: 'size',
+                        // size: 'size',
                         image: 'product.mainImage'
                     },
                     prepare(selection: any) {
                         const { title, size, image } = selection
                         return {
                             title: title,
-                            subtitle: size,
+                            subtitle: "Third",
                             media: image
                         }
                     }
