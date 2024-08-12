@@ -160,4 +160,22 @@ export default {
             validation: (Rule: any) => Rule.required()
         },
     ],
+    preview: {
+        select: {
+            title: "title",
+            image: "mainImage",
+            outOfStock: "outOfStock",
+            comingSoon: "comingSoon"
+        },
+        prepare({ title, image, outOfStock, comingSoon }) {
+
+            const subtitle = comingSoon ? "Coming soon" : outOfStock ? "Out of stock" : "In stock"
+            return {
+                title: title,
+                media: image,
+                subtitle: subtitle
+            }
+        }
+
+    }
 }
