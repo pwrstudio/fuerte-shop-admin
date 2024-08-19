@@ -16,7 +16,7 @@ export default {
             validation: (Rule: any) => Rule.required()
         },
         {
-            title: 'Weight',
+            title: 'Weight (in grams)',
             name: 'weight',
             type: 'number',
             validation: (Rule: any) => Rule.required()
