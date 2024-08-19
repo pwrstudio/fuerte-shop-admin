@@ -16,6 +16,11 @@ export default {
             validation: (Rule: any) => Rule.required()
         },
         {
+            title: 'Weight',
+            name: 'weight',
+            type: 'number',
+        },
+        {
             title: "Product has variants",
             name: "productHasVariants",
             type: "boolean"
@@ -168,7 +173,6 @@ export default {
             comingSoon: "comingSoon"
         },
         prepare({ title, image, outOfStock, comingSoon }) {
-
             const subtitle = comingSoon ? "Coming soon" : outOfStock ? "Out of stock" : "In stock"
             return {
                 title: title,
