@@ -96,38 +96,6 @@ export default {
             ],
             hidden: ({ document }) => !document?.productHasVariants
         },
-        // {
-        //     title: "Shipping rates",
-        //     name: "shippingRates",
-        //     type: "array",
-        //     of: [
-        //         {
-        //             type: "object",
-        //             fields: [
-        //                 {
-        //                     title: "Title",
-        //                     name: "title",
-        //                     type: "string"
-        //                 },
-        //                 {
-        //                     title: "Price",
-        //                     name: "price",
-        //                     type: "number"
-        //                 },
-        //                 {
-        //                     title: "Estimated delivery time in days (minimum)",
-        //                     name: "estimatedDeliveryTimeMin",
-        //                     type: "number"
-        //                 },
-        //                 {
-        //                     title: "Estimated delivery time in days (maximum)",
-        //                     name: "estimatedDeliveryTimeMax",
-        //                     type: "number"
-        //                 }
-        //             ]
-        //         }
-        //     ]
-        // },
         {
             title: 'Main image',
             name: 'mainImage',
