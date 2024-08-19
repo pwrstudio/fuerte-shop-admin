@@ -19,6 +19,7 @@ export default {
             title: 'Weight',
             name: 'weight',
             type: 'number',
+            validation: (Rule: any) => Rule.required()
         },
         {
             title: "Product has variants",
