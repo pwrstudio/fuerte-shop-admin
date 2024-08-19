@@ -68,6 +68,22 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Region = {
+  _id: string;
+  _type: "region";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  regionName?: string;
+  estimatedDeliveryTimeMin?: number;
+  estimatedDeliveryTimeMax?: number;
+  to500?: number;
+  to1000?: number;
+  to1500?: number;
+  to2000?: number;
+  max?: number;
+};
+
 export type LandingPage = {
   _id: string;
   _type: "landingPage";
@@ -76,7 +92,6 @@ export type LandingPage = {
   _rev: string;
   title?: string;
   products?: Array<{
-    size?: "full" | "half" | "third";
     product?: {
       _ref: string;
       _type: "reference";
@@ -106,6 +121,7 @@ export type Product = {
   _rev: string;
   title?: string;
   price?: number;
+  weight?: number;
   productHasVariants?: boolean;
   stripeId?: string;
   comingSoon?: boolean;
@@ -115,13 +131,6 @@ export type Product = {
     label?: string;
     value?: string;
     outOfStock?: boolean;
-    _key: string;
-  }>;
-  shippingRates?: Array<{
-    title?: string;
-    price?: number;
-    estimatedDeliveryTimeMin?: number;
-    estimatedDeliveryTimeMax?: number;
     _key: string;
   }>;
   mainImage?: {
